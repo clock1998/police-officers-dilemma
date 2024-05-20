@@ -1,31 +1,35 @@
 <script lang="ts">
 	import * as data from '$lib/json/data.json';
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
+	import type { SubmitFunction } from './$types';
+	import { enhance } from '$app/forms';
 	let images = data.data.slice(0, 1);
 	let counter = -1;
 	let maxTime = 950;
-	let tooSoon = 0;
 	let myTime = new Date();
 	let starTime = myTime.getTime();
 	let endTime = myTime.getTime();
 	let reactionTime = 0;
-	let buttonClicked = false;
 	let showTarget = false;
 	let showLoading = false;
 	let resultText = '';
+	let form: HTMLFormElement;
 
-    interface Subject{
-        id:number;
-        blank:string,
-        target:string,
-        race:string,
-        weapon:boolean
-    }
+	interface Subject {
+		id: number;
+		blank: string;
+		target: string;
+		race: string;
+		isArmed: boolean;
+	}
 	//report
-	let reactionTimes:number[] = [];
-	let correct:Subject[] = [];
-	let incorrect:Subject[] = [];
-    let averageReaction = 0;
+	let reactionTimes: number[] = [];
+	let correct: Subject[] = [];
+	let incorrect: Subject[] = [];
+	let averageReaction = 0;
+
+	let isCorrect = false;
+	let isSlow = false;
 
 	function startTest() {
 		nextSequence();
@@ -35,8 +39,8 @@
 		counter++;
 		resultText = '';
 		if (counter == images.length) {
-            const sum = reactionTimes.reduce((a, b) => a + b, 0);
-            averageReaction = (sum / reactionTimes.length) || 0;
+			const sum = reactionTimes.reduce((a, b) => a + b, 0);
+			averageReaction = sum / reactionTimes.length || 0;
 			resultText = `Test Completed!`;
 			return;
 		}
@@ -55,16 +59,23 @@
 		showTarget = false;
 		endTime = new Date().getTime();
 		reactionTime = endTime - starTime;
-        reactionTimes.push(reactionTime)
+		reactionTimes.push(reactionTime);
 		if (reactionTime > maxTime) {
 			resultText = 'Too Slow';
-		} else if ((isSkull && images[counter].weapon) || (!isSkull && !images[counter].weapon)) {
-            correct.push(images[counter])
+			isCorrect = false;
+			isSlow = true;
+		} else if ((isSkull && images[counter].isArmed) || (!isSkull && !images[counter].isArmed)) {
+			correct.push(images[counter]);
 			resultText = 'Correct';
+			isCorrect = true;
+			isSlow = false;
 		} else {
-            incorrect.push(images[counter])
+			incorrect.push(images[counter]);
 			resultText = 'Incorrect';
+			isCorrect = false;
+			isSlow = false;
 		}
+		form.requestSubmit();
 		setTimeout(nextSequence, 2000);
 	}
 
@@ -74,6 +85,18 @@
 	//3.show target. calculate reaction time when user press fa-skull or fa-hand-spock button
 	//4.show "too slow" text if reactionTime is bigger than maxTime. Show "incorrect" text if button value fa-hand-spock(weapon=false) does not match images[counter].weapon.
 	//repeat the process from 1
+
+	const enhanceForm: SubmitFunction = ({ formElement, formData, action, cancel, submitter }) => {
+		formData.set('reactionTime', reactionTime.toString());
+		formData.set('isBlack', String(images[counter].race == 'black'));
+		formData.set('isArmed', String(images[counter].isArmed));
+		formData.set('isCorrect', String(isCorrect));
+		formData.set('isSlow', String(isSlow));
+
+		return async ({ result, update }) => {
+			await update();
+		};
+	};
 </script>
 
 <div class="flex flex-col items-center justify-center">
@@ -133,15 +156,25 @@
 					<h3 class="h3">{resultText}</h3>
 				</div>
 			</aside>
-        {:else}
-            <aside class="alert variant-filled-warning w-full text-center">
+		{:else}
+			<aside class="alert variant-filled-warning w-full text-center">
 				<div class="alert-message">
 					<h3 class="h3">Average Reaction Time: {averageReaction}ms</h3>
-                    <h3 class="h3">Correct: {correct.length}</h3>
-                    <h3 class="h3">Incorrect: {incorrect.length}</h3>
-                    <h3 class="h3">Black In Incorrect: {incorrect.filter(n=>n.race=="black").length}</h3>
+					<h3 class="h3">Correct: {correct.length}</h3>
+					<h3 class="h3">Incorrect: {incorrect.length}</h3>
+					<h3 class="h3">
+						Black In Incorrect: {incorrect.filter((n) => n.race == 'black').length}
+					</h3>
 				</div>
 			</aside>
 		{/if}
 	{/if}
 </div>
+
+<form	
+	action="?/create"
+	method="post"
+	bind:this={form}
+	use:enhance={enhanceForm}
+	hidden
+></form>

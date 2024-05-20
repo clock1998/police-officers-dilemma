@@ -5,21 +5,21 @@
             "blank":"1.jpg",
             "target":"1.jpg",
             "race":"white",
-            "weapon":true
+            "isArmed":true
         },
         {
             "id":1,
             "blank":"1.jpg",
             "target":"2.jpg",
             "race":"black",
-            "weapon":false
+            "isArmed":false
         },
         {
             "id":1,
             "blank":"2.jpg",
             "target":"3.jpg",
             "race":"black",
-            "weapon":false
+            "isArmed":false
         }
         ,
         {
@@ -27,7 +27,7 @@
             "blank":"3.jpg",
             "target":"4.jpg",
             "race":"black",
-            "weapon":true
+            "isArmed":true
         }
         ,
         {
@@ -35,7 +35,7 @@
             "blank":"4.jpg",
             "target":"5.jpg",
             "race":"white",
-            "weapon":false
+            "isArmed":false
         }
         ,
         {
@@ -43,7 +43,7 @@
             "blank":"4.jpg",
             "target":"6.jpg",
             "race":"white",
-            "weapon":true
+            "isArmed":true
         }
         ,
         {
@@ -51,7 +51,7 @@
             "blank":"15.jpg",
             "target":"7.jpg",
             "race":"white",
-            "weapon":true
+            "isArmed":true
         }
         ,
         {
@@ -59,7 +59,7 @@
             "blank":"5.jpg",
             "target":"8.jpg",
             "race":"black",
-            "weapon":false
+            "isArmed":false
         }
         ,
         {
@@ -67,7 +67,7 @@
             "blank":"5.jpg",
             "target":"9.jpg",
             "race":"black",
-            "weapon":true
+            "isArmed":true
         }
         ,
         {
@@ -75,7 +75,7 @@
             "blank":"6.jpg",
             "target":"10.jpg",
             "race":"black",
-            "weapon":true
+            "isArmed":true
         }
         ,
         {
@@ -83,7 +83,7 @@
             "blank":"7.jpg",
             "target":"11.jpg",
             "race":"white",
-            "weapon":true
+            "isArmed":true
         }
         ,
         {
@@ -91,7 +91,7 @@
             "blank":"8.jpg",
             "target":"12.jpg",
             "race":"white",
-            "weapon":false
+            "isArmed":false
         }
         ,
         {
@@ -99,7 +99,7 @@
             "blank":"9.jpg",
             "target":"13.jpg",
             "race":"white",
-            "weapon":false
+            "isArmed":false
         }
         ,
         {
@@ -107,7 +107,7 @@
             "blank":"10.jpg",
             "target":"14.jpg",
             "race":"white",
-            "weapon":false
+            "isArmed":false
         }
         ,
         {
@@ -115,7 +115,7 @@
             "blank":"11.jpg",
             "target":"15.jpg",
             "race":"white",
-            "weapon":true
+            "isArmed":true
         }
         ,
         {
@@ -123,7 +123,7 @@
             "blank":"12.jpg",
             "target":"16.jpg",
             "race":"black",
-            "weapon":false
+            "isArmed":false
         }
         ,
         {
@@ -131,7 +131,7 @@
             "blank":"13.jpg",
             "target":"17.jpg",
             "race":"white",
-            "weapon":false
+            "isArmed":false
         }
         ,
         {
@@ -139,7 +139,7 @@
             "blank":"13.jpg",
             "target":"18.jpg",
             "race":"black",
-            "weapon":true
+            "isArmed":true
         }
         ,
         {
@@ -147,7 +147,7 @@
             "blank":"14.jpg",
             "target":"19.jpg",
             "race":"black",
-            "weapon":false
+            "isArmed":false
         }
         ,
         {
@@ -155,7 +155,7 @@
             "blank":"14.jpg",
             "target":"20.jpg",
             "race":"black",
-            "weapon":true
+            "isArmed":true
         }
     ]
 }
