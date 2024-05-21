@@ -2,158 +2,158 @@
     "data": [
         {
             "id":1,
-            "blank":"1.jpg",
-            "target":"1.jpg",
+            "blank":"1.jpeg",
+            "target":"1.jpeg",
             "race":"white",
             "isArmed":true
         },
         {
             "id":1,
-            "blank":"1.jpg",
-            "target":"2.jpg",
+            "blank":"1.jpeg",
+            "target":"2.jpeg",
             "race":"black",
             "isArmed":false
         },
         {
             "id":1,
-            "blank":"2.jpg",
-            "target":"3.jpg",
+            "blank":"2.jpeg",
+            "target":"3.jpeg",
             "race":"black",
             "isArmed":false
         }
         ,
         {
             "id":1,
-            "blank":"3.jpg",
-            "target":"4.jpg",
+            "blank":"3.jpeg",
+            "target":"4.jpeg",
             "race":"black",
             "isArmed":true
         }
         ,
         {
             "id":1,
-            "blank":"4.jpg",
-            "target":"5.jpg",
+            "blank":"4.jpeg",
+            "target":"5.jpeg",
             "race":"white",
             "isArmed":false
         }
         ,
         {
             "id":1,
-            "blank":"4.jpg",
-            "target":"6.jpg",
+            "blank":"4.jpeg",
+            "target":"6.jpeg",
             "race":"white",
             "isArmed":true
         }
         ,
         {
             "id":1,
-            "blank":"15.jpg",
-            "target":"7.jpg",
+            "blank":"15.jpeg",
+            "target":"7.jpeg",
             "race":"white",
             "isArmed":true
         }
         ,
         {
             "id":1,
-            "blank":"5.jpg",
-            "target":"8.jpg",
+            "blank":"5.jpeg",
+            "target":"8.jpeg",
             "race":"black",
             "isArmed":false
         }
         ,
         {
             "id":1,
-            "blank":"5.jpg",
-            "target":"9.jpg",
+            "blank":"5.jpeg",
+            "target":"9.jpeg",
             "race":"black",
             "isArmed":true
         }
         ,
         {
             "id":1,
-            "blank":"6.jpg",
-            "target":"10.jpg",
+            "blank":"6.jpeg",
+            "target":"10.jpeg",
             "race":"black",
             "isArmed":true
         }
         ,
         {
             "id":1,
-            "blank":"7.jpg",
-            "target":"11.jpg",
+            "blank":"7.jpeg",
+            "target":"11.jpeg",
             "race":"white",
             "isArmed":true
         }
         ,
         {
             "id":1,
-            "blank":"8.jpg",
-            "target":"12.jpg",
+            "blank":"8.jpeg",
+            "target":"12.jpeg",
             "race":"white",
             "isArmed":false
         }
         ,
         {
             "id":1,
-            "blank":"9.jpg",
-            "target":"13.jpg",
+            "blank":"9.jpeg",
+            "target":"13.jpeg",
             "race":"white",
             "isArmed":false
         }
         ,
         {
             "id":1,
-            "blank":"10.jpg",
-            "target":"14.jpg",
+            "blank":"10.jpeg",
+            "target":"14.jpeg",
             "race":"white",
             "isArmed":false
         }
         ,
         {
             "id":1,
-            "blank":"11.jpg",
-            "target":"15.jpg",
+            "blank":"11.jpeg",
+            "target":"15.jpeg",
             "race":"white",
             "isArmed":true
         }
         ,
         {
             "id":1,
-            "blank":"12.jpg",
-            "target":"16.jpg",
+            "blank":"12.jpeg",
+            "target":"16.jpeg",
             "race":"black",
             "isArmed":false
         }
         ,
         {
             "id":1,
-            "blank":"13.jpg",
-            "target":"17.jpg",
+            "blank":"13.jpeg",
+            "target":"17.jpeg",
             "race":"white",
             "isArmed":false
         }
         ,
         {
             "id":1,
-            "blank":"13.jpg",
-            "target":"18.jpg",
+            "blank":"13.jpeg",
+            "target":"18.jpeg",
             "race":"black",
             "isArmed":true
         }
         ,
         {
             "id":1,
-            "blank":"14.jpg",
-            "target":"19.jpg",
+            "blank":"14.jpeg",
+            "target":"19.jpeg",
             "race":"black",
             "isArmed":false
         }
         ,
         {
             "id":1,
-            "blank":"14.jpg",
-            "target":"20.jpg",
+            "blank":"14.jpeg",
+            "target":"20.jpeg",
             "race":"black",
             "isArmed":true
         }
