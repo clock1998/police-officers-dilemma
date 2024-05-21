@@ -111,10 +111,12 @@
 	};
 </script>
 
-<div class="flex h-screen flex-col items-center justify-center">
+<div class="flex h-screen flex-col items-center justify-center bg-gray-700">
 	{#if counter == -1}
-		<div>
-			<button type="button" class="variant-filled-success btn btn-xl" on:click={startTest}>
+		<div class="flex flex-col p-6 items-center">
+			<h1 class="h1 mb-6 text-wrap text-center  w-4/5">Police Officer's Dilemma</h1>
+			<h4 class="h4 mb-6 text-wrap text-center w-3/5">On PC or Mac Use Left Arrow Key and Right Arrow Key to play.</h4>
+			<button type="button" class="variant-filled-success btn btn-xl w-2/5" on:click={startTest}>
 				<i class="fa-solid fa-hand-spock"></i>
 				Start
 			</button>
@@ -179,6 +181,8 @@
 			</aside>
 		{/if}
 	{/if}
+
 </div>
+
 <svelte:window on:keydown|preventDefault={onKeyDown} />
 <form action="?/create" method="post" bind:this={form} use:enhance={enhanceForm} hidden></form>
