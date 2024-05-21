@@ -4,13 +4,13 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "vite build --output public",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
-		"vercel-build": "prisma generate && prisma migrate deploy"
+		"vercel-build": "prisma generate && prisma migrate deploy",
 	},
 	"devDependencies": {
 		"@skeletonlabs/skeleton": "^2.10.0",
