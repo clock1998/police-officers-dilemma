@@ -7,11 +7,10 @@ export const actions: Actions = {
         try {
             let formData = await request.formData();
             let reactionTime = Number(formData.get('reactionTime'))
-            let isBlack = Boolean(formData.get('isBlack'));
-            let isArmed = Boolean(formData.get('isArmed'));
-            let isCorrect = Boolean(formData.get('isCorrect'));
-            let isSlow = Boolean(formData.get('isSlow'));
-
+            const isBlack = formData.get('isBlack') === 'true';
+            const isArmed = formData.get('isArmed') === 'true';
+            const isCorrect = formData.get('isCorrect') === 'true';
+            const isSlow = formData.get('isSlow') === 'true';
             let result = await prisma.testResult.create({
                 data: {
                     reactionTime,

@@ -3,7 +3,7 @@
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
 	import type { SubmitFunction } from './$types';
 	import { enhance } from '$app/forms';
-	let images = data.data.slice(0, 1);
+	let images = data.data;
 	let counter = -1;
 	let maxTime = 950;
 	let myTime = new Date();
@@ -92,14 +92,14 @@
 		formData.set('isArmed', String(images[counter].isArmed));
 		formData.set('isCorrect', String(isCorrect));
 		formData.set('isSlow', String(isSlow));
-
+		console.log(formData)
 		return async ({ result, update }) => {
 			await update();
 		};
 	};
 </script>
 
-<div class="flex flex-col items-center justify-center">
+<div class="flex flex-col items-center justify-center h-screen">
 	{#if counter == -1}
 		<div>
 			<button type="button" class="variant-filled-success btn btn-xl" on:click={startTest}>
