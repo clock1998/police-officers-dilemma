@@ -3,7 +3,9 @@
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
 	import type { SubmitFunction } from './$types';
 	import { enhance } from '$app/forms';
+	import shuffle from '$lib/helper/shuffle';
 	let images = data.data;
+	shuffle(images);
 	let counter = -1;
 	let maxTime = 950;
 	let myTime = new Date();
@@ -79,6 +81,17 @@
 		setTimeout(nextSequence, 2000);
 	}
 
+	function onKeyDown(e: KeyboardEvent) {
+		switch (e.key) {
+			case 'ArrowRight':
+				handleButtonClick(true);
+				break;
+			case 'ArrowLeft':
+				handleButtonClick(false);
+				break;
+		}
+	}
+
 	//0.start press
 	//1.show loading 3 s
 	//2.show blank for 2 s
@@ -92,14 +105,13 @@
 		formData.set('isArmed', String(images[counter].isArmed));
 		formData.set('isCorrect', String(isCorrect));
 		formData.set('isSlow', String(isSlow));
-		console.log(formData)
 		return async ({ result, update }) => {
 			await update();
 		};
 	};
 </script>
 
-<div class="flex flex-col items-center justify-center h-screen">
+<div class="flex h-screen flex-col items-center justify-center">
 	{#if counter == -1}
 		<div>
 			<button type="button" class="variant-filled-success btn btn-xl" on:click={startTest}>
@@ -108,8 +120,8 @@
 			</button>
 		</div>
 	{:else}
-		<div class="card w-full p-4">
-			{#if counter < images.length}
+		{#if counter < images.length}
+			<div class="card flex min-h-[480px] w-full min-w-[640px] items-center justify-center p-4">
 				{#if showLoading}
 					<ProgressRadial />
 				{:else if showTarget}
@@ -117,8 +129,8 @@
 				{:else}
 					<img src="/blank/{images[counter].blank}" alt="no image" />
 				{/if}
-			{/if}
-		</div>
+			</div>
+		{/if}
 		<div class="my-2 flex w-full justify-between">
 			<button
 				type="button"
@@ -170,11 +182,5 @@
 		{/if}
 	{/if}
 </div>
-
-<form	
-	action="?/create"
-	method="post"
-	bind:this={form}
-	use:enhance={enhanceForm}
-	hidden
-></form>
+<svelte:window on:keydown|preventDefault={onKeyDown} />
+<form action="?/create" method="post" bind:this={form} use:enhance={enhanceForm} hidden></form>

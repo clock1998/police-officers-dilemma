@@ -43,12 +43,17 @@
 		var responseTimeChart = new Chart(responseTimeChartCanvas, {
 			type: 'bar',
 			data: {
-				labels: ['Unarmed White', 'Unarmed Black', 'Armed White', 'Armed Black'],
+				labels: ['Unarmed', 'Armed'],
 				datasets: [
+                    {
+						label: 'White',
+						data: averages.filter(n=>!n.isArmed && !n.isBlack).map((a) => a.averageReactionTime).concat(averages.filter(n=>n.isArmed && !n.isBlack).map((a) => a.averageReactionTime)),
+						backgroundColor: 'rgb(255, 224, 189)'
+					},
 					{
-						label: 'Reaction Time (ms)',
-						data: averages.map((a) => a.averageReactionTime),
-						backgroundColor: 'rgb(54, 162, 235)'
+						label: 'Black',
+						data: averages.filter(n=>!n.isArmed && n.isBlack).map((a) => a.averageReactionTime).concat(averages.filter(n=>n.isArmed && n.isBlack).map((a) => a.averageReactionTime)),
+						backgroundColor: 'rgb(60, 20, 20)'
 					}
 				]
 			},
@@ -68,12 +73,17 @@
 		var errorsChart = new Chart(errorsChartCanvas, {
 			type: 'bar',
 			data: {
-				labels: ['Unarmed White', 'Unarmed Black', 'Armed White', 'Armed Black'],
+				labels: ['Unarmed', 'Armed'],
 				datasets: [
+                    {
+						label: 'White',
+						data: averages.filter(n=>!n.isArmed && !n.isBlack).map((a) => a.errorRate).concat(averages.filter(n=>n.isArmed && !n.isBlack).map((a) => a.errorRate)),
+						backgroundColor: 'rgb(255, 224, 189)'
+					},
 					{
-						label: 'Error Rate (%)',
-						data: averages.map((a) => a.errorRate),
-						backgroundColor: 'rgb(255, 99, 132)'
+						label: 'Black',
+						data: averages.filter(n=>!n.isArmed && n.isBlack).map((a) => a.errorRate).concat(averages.filter(n=>n.isArmed && n.isBlack).map((a) => a.errorRate)),
+						backgroundColor: 'rgb(60, 20, 20)'
 					}
 				]
 			},
@@ -120,7 +130,7 @@
 
 <div class="flex flex-col">
 	<div class="flex flex-col items-center justify-center">
-		<div style="width: 800px;"><canvas bind:this={chartCanvas} id="myChart"></canvas></div>
+		
 		<div style="width: 500px;"><canvas bind:this={pieChartCanvas}></canvas></div>
 		<div style="width: 800px;"><canvas bind:this={responseTimeChartCanvas}></canvas></div>
 		<div style="width: 800px;"><canvas bind:this={errorsChartCanvas}></canvas></div>
