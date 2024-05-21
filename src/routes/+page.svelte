@@ -124,10 +124,8 @@
 			<div class="card flex items-center justify-center p-4">
 				{#if showLoading}
 					<ProgressRadial />
-				{:else if showTarget}
-					<img src="/target/{images[counter].target}" alt="no target" />
 				{:else}
-					<img src="/blank/{images[counter].blank}" alt="no blank" />
+					<img src={showTarget ? `/target/${images[counter].target}`: `/blank/${images[counter].blank}`} alt="no target" />
 				{/if}
 			</div>
 		{/if}
