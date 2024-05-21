@@ -23,12 +23,12 @@
 
 			let averages = groups.map((group) => {
 				let filtered = data.filter(
-					(d) => d.isArmed === group.isArmed && d.isBlack === group.isBlack
+					(d: { isArmed: boolean; isBlack: boolean; }) => d.isArmed === group.isArmed && d.isBlack === group.isBlack
 				);
 				let averageReactionTime =
-					filtered.reduce((sum, d) => sum + d.reactionTime, 0) / filtered.length;
+					filtered.reduce((sum: any, d: { reactionTime: any; }) => sum + d.reactionTime, 0) / filtered.length;
 				let errorRate =
-					(filtered.filter((d) => !d.isCorrect || d.isSlow).length / filtered.length) * 100;
+					(filtered.filter((d: { isCorrect: any; isSlow: any; }) => !d.isCorrect || d.isSlow).length / filtered.length) * 100;
 				return {
 					...group,
 					averageReactionTime,
