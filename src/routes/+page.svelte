@@ -121,13 +121,13 @@
 		</div>
 	{:else}
 		{#if counter < images.length}
-			<div class="card flex min-h-[480px] w-full min-w-[640px] items-center justify-center p-4">
+			<div class="card flex items-center justify-center p-4">
 				{#if showLoading}
 					<ProgressRadial />
 				{:else if showTarget}
-					<img src="/target/{images[counter].target}" alt="no image" />
+					<img src="/target/{images[counter].target}" alt="no target" />
 				{:else}
-					<img src="/blank/{images[counter].blank}" alt="no image" />
+					<img src="/blank/{images[counter].blank}" alt="no blank" />
 				{/if}
 			</div>
 		{/if}
