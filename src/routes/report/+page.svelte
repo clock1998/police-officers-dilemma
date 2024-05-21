@@ -104,7 +104,7 @@
 			labels: ['Correct', 'Incorrect', 'Too Slow'],
 			datasets: [
 				{
-					label: 'Accuracy',
+					label: 'Numbers',
 					data: [
 						results.filter((n) => n.isCorrect).length,
 						results.filter((n) => !n.isCorrect).length,
