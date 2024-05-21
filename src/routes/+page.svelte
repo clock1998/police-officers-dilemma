@@ -78,7 +78,7 @@
 			isSlow = false;
 		}
 		form.requestSubmit();
-		setTimeout(nextSequence, 2000);
+		setTimeout(nextSequence, 3000);
 	}
 
 	function onKeyDown(e: KeyboardEvent) {
