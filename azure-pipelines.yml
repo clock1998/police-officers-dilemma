@@ -9,7 +9,7 @@ resources:
 - repo: self
 
 variables:
-  tag: 'police-officers-dilemma'
+  tag: 'police-officers-dilemma:latest'
 
 stages:
 - stage: Build
