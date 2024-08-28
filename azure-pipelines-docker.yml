@@ -1,0 +1,68 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- master
+
+resources:
+- repo: self
+
+variables:
+  tag: 'shoot-or-not:latest'
+
+stages:
+
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      name: Default
+      
+    steps:
+    - task: CmdLine@2
+      displayName: Detect vulunbilities
+      inputs:
+        script: 'echo Hello world'
+    - task: CmdLine@2
+      displayName: Runing test
+      inputs:
+        script: 'echo Hello world'
+    - task: DownloadSecureFile@1
+      displayName: Download Config File
+      name: DownloadEnvFile
+      inputs:
+        secureFile: '.env.production'
+    - task: CopyFiles@2
+      displayName: 'Copy .env.production file to working directory'
+      inputs:
+        SourceFolder: '$(Agent.TempDirectory)'
+        Contents: '.env.production'
+        TargetFolder: './'
+        OverWrite: true
+    - task: Docker@2
+      displayName: Build a docker image
+      inputs:
+        command: build
+        dockerfile: '**/Dockerfile.prod'
+        tags: $(tag)
+        arguments: '-t shoot-or-not:latest'
+
+    - task: CmdLine@2
+      displayName: Clean up previous build and images
+      inputs:
+        script:
+          docker rm -f shoot-or-not
+    - task: CmdLine@2
+      displayName: Start container
+      inputs:
+        script: 'docker run -p 3000 -d --restart unless-stopped --network tunnel --name shoot-or-not shoot-or-not:latest' # run the container in the network 'tunnel' that cloudflare tunnel is running on
+    # - task: Docker@2
+    #   displayName: Start an image
+    #   inputs:
+    #     command: 'start'
+    #     container: '$(tag)'
+    #     arguments: '-p 3000:3000 -d --rm --name shoot-or-not shoot-or-not:latest '
+          

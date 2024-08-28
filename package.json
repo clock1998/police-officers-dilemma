@@ -3,22 +3,28 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev && npx prisma generate",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
-		"postinstall": "prisma generate"
+		"generate-prisma-client": "dotenv -e .env.production -- npx prisma generate",
+		"migrate": "dotenv -e .env -- npx prisma migrate dev",
+		"migrate:prod": "dotenv -e .env.production -- npx prisma migrate deploy",
+		"update-database": "dotenv -e .env -- npx prisma db push",
+		"update-database:prod": "dotenv -e .env.production -- npx prisma db push",
+		"downmigration": "npx prisma migrate diff --from-schema-datamodel prisma/schema.prisma --to-schema-datasource prisma/schema.prisma --script > ./prisma/down.sql",
+		"seed": "npx prisma db seed"
 	},
 	"devDependencies": {
 		"@skeletonlabs/skeleton": "^2.10.0",
 		"@skeletonlabs/tw-plugin": "^0.4.0",
-		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-node": "^5.2.0",
 		"@sveltejs/adapter-vercel": "^5.3.0",
-		"@sveltejs/kit": "2.5.9",
-		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@sveltejs/kit": "^2.5.18",
+		"@tailwindcss/forms": "^0.5.7",
 		"@tailwindcss/typography": "^0.5.10",
 		"@types/eslint": "^8.56.0",
 		"@types/node": "^20.12.12",
@@ -31,9 +37,9 @@
 		"postcss": "^8.4.33",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
-		"prettier-plugin-tailwindcss": "^0.5.1",
+		"prettier-plugin-tailwindcss": "^0.6.5",
 		"svelte": "^4.2.7",
-		"svelte-check": "^3.6.0",
+		"svelte-check": "^3.8.5",
 		"tailwindcss": "^3.4.1",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
@@ -44,6 +50,7 @@
 		"@fortawesome/fontawesome-free": "^6.5.2",
 		"@prisma/client": "^5.14.0",
 		"chart.js": "^4.4.3",
+		"dotenv": "^16.4.5",
 		"prisma": "^5.14.0"
 	}
 }

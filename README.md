@@ -1,4 +1,3 @@
-https://shoot-or-not.vercel.app/
 This app replicates the Police Officer's Dilemma designed by social psychologist, Joshua Correll.
 Orginal game: https://www.colorado.edu/lab/social-perception/research/police-officers-dilemma
 
